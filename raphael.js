@@ -218,8 +218,15 @@
     eve.toString = function () {
         return "You are running Eve " + version;
     };
-    (typeof module != "undefined" && module.exports) ? (module.exports = eve) : (typeof define != "undefined" ? (define("eve", [], function() { return eve; })) : (glob.eve = eve));
+  if (typeof module != "undefined" && module.exports) 
+    module.exports = eve;
+  if (typeof define != "undefined")
+    define("eve", [], function() { return eve; });
+
+  glob.eve = eve;
+
 })(this);
+
 
 // ┌─────────────────────────────────────────────────────────────────────┐ \\
 // │ "Raphaël 2.1.0" - JavaScript Vector Library                         │ \\
